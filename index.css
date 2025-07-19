@@ -1,0 +1,103 @@
+:root {
+  /* Color Palette */
+  --primary-color: #4a00e0; /* Purple */
+  --secondary-color: #8e2de2; /* Lighter Purple */
+  --accent-color: #00c6ff; /* Blue */
+  --gradient-start: var(--primary-color);
+  --gradient-end: var(--secondary-color);
+  --gradient-hover-start: #5e1bea; /* Slightly lighter purple */
+  --gradient-hover-end: #a04dff; /* Slightly lighter secondary purple */
+  --text-light: #f8f9fa;
+  --text-dark: #343a40;
+  --background-light: #ffffff;
+  --background-dark: #121212; /* Optional dark mode background */
+  --card-background: #ffffff;
+  --card-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  --border-radius: 12px;
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background-light);
+  color: var(--text-dark);
+  line-height: 1.6;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+a {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  padding: 10px 20px;
+  border: none;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, var(--gradient-start), var(--gradient-end));
+  color: var(--text-light);
+  box-shadow: 0 4px 10px rgba(74, 0, 224, 0.3);
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, var(--gradient-hover-start), var(--gradient-hover-end));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(74, 0, 224, 0.4);
+}
+
+.card {
+  background-color: var(--card-background);
+  border-radius: var(--border-radius);
+  box-shadow: var(--card-shadow);
+  padding: 20px;
+  margin-bottom: 20px;
+  overflow: hidden; /* Ensure content respects border radius */
+}
+
+/* Basic Responsive Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Utility Classes */
+.text-center {
+  text-align: center;
+}
+
+.mt-1 { margin-top: 1rem; }
+.mt-2 { margin-top: 2rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.p-1 { padding: 1rem; }
+.p-2 { padding: 2rem; } 
