@@ -1,0 +1,107 @@
+/* ToolsPage.css */
+
+.tools-page {
+  padding-top: 30px;
+}
+
+.tools-page h1 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: var(--primary-color);
+}
+
+.page-subtitle {
+  font-size: 1.1rem;
+  color: #6c757d;
+  margin-bottom: 40px; /* More space before the grid */
+}
+
+.tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+}
+
+.tool-card-link {
+  text-decoration: none;
+  color: inherit; /* Inherit text color */
+  display: block; /* Make the link take up the grid cell */
+}
+
+.tool-card {
+  padding: 30px 25px;
+  height: 100%; /* Make cards in a row equal height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Push button to bottom */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-top: 5px solid transparent; /* Placeholder for hover effect */
+}
+
+.tool-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  border-top-color: var(--primary-color);
+}
+
+.tool-icon {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+  line-height: 1;
+}
+
+.tool-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+.tool-card p {
+  font-size: 0.95rem;
+  color: #555;
+  line-height: 1.6;
+  flex-grow: 1; /* Allow description to take space */
+  margin-bottom: 20px; /* Space before button */
+}
+
+.launch-tool-btn {
+  font-weight: 600;
+  color: var(--primary-color);
+  text-align: right;
+  transition: color 0.3s ease;
+  display: block;
+}
+
+.tool-card-link:hover .launch-tool-btn {
+  color: var(--accent-color);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+    .tools-page h1 {
+        font-size: 1.8rem;
+    }
+    .page-subtitle {
+        font-size: 1rem;
+        margin-bottom: 30px;
+    }
+    .tools-grid {
+        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+    .tool-card {
+        padding: 25px 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+     .tools-page {
+        padding-top: 20px;
+    }
+    .tools-grid {
+        grid-template-columns: 1fr; /* Stack cards on smallest screens */
+    }
+} 

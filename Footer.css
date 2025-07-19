@@ -1,0 +1,119 @@
+.footer {
+  background: linear-gradient(90deg, #1a1a2e, #16213e); /* Dark blue/purple gradient */
+  color: var(--text-light);
+  padding: 40px 0 0; /* Padding top, bottom handled by footer-bottom */
+  margin-top: auto; /* Push footer to bottom if content is short */
+}
+
+.footer-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  padding-bottom: 30px; /* Space before footer bottom */
+}
+
+.footer-section h4 {
+  color: var(--accent-color); /* Use accent for headings */
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.footer-section p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  color: rgba(248, 249, 250, 0.8); /* Slightly transparent light text */
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 10px;
+}
+
+.footer-section ul li a {
+  color: rgba(248, 249, 250, 0.8);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-section ul li a:hover {
+  color: var(--text-light); /* Brighten on hover */
+}
+
+.subscribe-form {
+  display: flex;
+  margin-top: 10px;
+}
+
+.subscribe-form input[type="email"] {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--text-light);
+  outline: none;
+}
+
+.subscribe-form input[type="email"]::placeholder {
+  color: rgba(248, 249, 250, 0.5);
+}
+
+.subscribe-form button {
+  padding: 10px 15px;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  /* Use primary button style from index.css */
+}
+
+.footer-bottom {
+  text-align: center;
+  padding: 15px 0;
+  margin-top: 30px; /* Space above bottom bar */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: rgba(248, 249, 250, 0.6);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .footer-container {
+    grid-template-columns: 1fr; /* Stack sections on small screens */
+    text-align: center;
+  }
+
+  .footer-section ul {
+    /* Adjust list alignment if needed */
+  }
+
+  .subscribe-form {
+    flex-direction: column;
+  }
+
+  .subscribe-form input[type="email"] {
+    border-radius: var(--border-radius);
+    margin-bottom: 10px;
+    text-align: center;
+  }
+
+  .subscribe-form button {
+    border-radius: var(--border-radius);
+    width: 100%;
+  }
+} 

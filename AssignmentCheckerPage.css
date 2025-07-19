@@ -1,0 +1,115 @@
+/* AssignmentCheckerPage.css */
+
+.checker-container {
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.checker-container h2 {
+  text-align: center;
+  margin-bottom: 15px;
+  color: var(--primary-color, #333);
+}
+
+.checker-container p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.checker-form textarea {
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 200px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.checker-form button {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background-color: var(--primary-color, #007bff);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.2s ease;
+}
+
+.checker-form button:hover {
+  background-color: var(--primary-dark-color, #0056b3);
+}
+
+.checker-form button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.loading-indicator,
+.error-message {
+  text-align: center;
+  padding: 15px;
+  margin-top: 20px;
+  border-radius: 4px;
+}
+
+.loading-indicator {
+  color: #555;
+}
+
+.error-message {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+.feedback-area {
+  margin-top: 30px;
+  padding: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+}
+
+.feedback-area h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Styles for markdown content */
+.feedback-area strong {
+    font-weight: bold;
+}
+.feedback-area h1, .feedback-area h2, .feedback-area h3, .feedback-area h4 {
+    margin-top: 1.2em;
+    margin-bottom: 0.6em;
+}
+.feedback-area ul, .feedback-area ol {
+    margin-left: 20px;
+    margin-bottom: 1em;
+}
+.feedback-area li {
+    margin-bottom: 0.4em;
+}
+.feedback-area code {
+    background-color: #eee;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+.feedback-area pre {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 4px;
+    overflow-x: auto;
+} 

@@ -1,132 +1,127 @@
-# StudyPulse - AI Powered Smart Learning Partner
+# YAML <a href="https://www.npmjs.com/package/yaml"><img align="right" src="https://badge.fury.io/js/yaml.svg" title="npm package" /></a>
 
-Welcome to StudyPulse, a modern, futuristic web-based educational platform designed to revolutionize learning through AI.
+`yaml` is a JavaScript parser and stringifier for [YAML](http://yaml.org/), a human friendly data serialization standard. It supports both parsing and stringifying data using all versions of YAML, along with all common data schemas. As a particularly distinguishing feature, `yaml` fully supports reading and writing comments and blank lines in YAML documents.
 
-## Project Overview
+The library is released under the ISC open source license, and the code is [available on GitHub](https://github.com/eemeli/yaml/). It has no external dependencies and runs on Node.js 6 and later, and in browsers from IE 11 upwards.
 
-StudyPulse provides AI-powered personalized learning paths, smart tools for progress tracking, interactive learning experiences (AR/3D), gamified quizzes, and an AI assistant to help students learn efficiently.
+For the purposes of versioning, any changes that break any of the endpoints or APIs documented here will be considered semver-major breaking changes. Undocumented library internals may change between minor versions, and previous APIs may be deprecated (but not removed).
 
-## Tech Stack
+For more information, see the project's documentation site: [**eemeli.org/yaml/v1**](https://eemeli.org/yaml/v1/)
 
-*   **Frontend:** React.js (Create React App)
-    *   Routing: `react-router-dom`
-    *   API Calls: `axios`
-    *   Charting: `chart.js`, `react-chartjs-2`
-    *   Styling: CSS (with CSS Variables for theming)
-*   **Backend:** Python (Django)
-    *   API Framework: `djangorestframework`
-    *   Database: SQLite (default, can be changed in `backend/studypulse_project/settings.py`)
-*   **AI Integration:** Gemini API (via backend)
+To install:
 
-## Project Structure
-
-```
-StudyPulse/
-├── backend/          # Django Backend Code
-│   ├── api/              # Main application logic, models, views, serializers
-│   ├── studypulse_project/ # Django project settings
-│   ├── media/            # User uploaded files
-│   ├── manage.py
-│   └── requirements.txt
-├── frontend/         # React Frontend Code
-│   ├── public/
-│   ├── src/
-│   │   ├── components/   # Reusable UI components (Layout, Features, Tools)
-│   │   └── pages/        # Page-level components
-│   ├── .gitignore
-│   └── package.json
-└── README.md         # This file
+```sh
+npm install yaml
 ```
 
-## Getting Started
+**Note:** This is `yaml@1`. You may also be interested in the next version, currently available as [`yaml@next`](https://www.npmjs.com/package/yaml/v/next).
 
-### Prerequisites
+## API Overview
 
-*   Node.js and npm (or yarn) installed (for frontend)
-*   Python and pip installed (for backend)
-*   Git (optional, for cloning)
+The API provided by `yaml` has three layers, depending on how deep you need to go: [Parse & Stringify](https://eemeli.org/yaml/v1/#parse-amp-stringify), [Documents](https://eemeli.org/yaml/#documents), and the [CST Parser](https://eemeli.org/yaml/#cst-parser). The first has the simplest API and "just works", the second gets you all the bells and whistles supported by the library along with a decent [AST](https://eemeli.org/yaml/#content-nodes), and the third is the closest to YAML source, making it fast, raw, and crude.
 
-### Setup
+```js
+import YAML from 'yaml'
+// or
+const YAML = require('yaml')
+```
 
-1.  **Clone the repository (optional):**
-    ```bash
-    git clone <repository-url>
-    cd StudyPulse
-    ```
+### Parse & Stringify
 
-2.  **Backend Setup:**
-    *   Navigate to the backend directory:
-        ```bash
-        cd backend
-        ```
-    *   Create a virtual environment (recommended):
-        ```bash
-        python -m venv venv
-        source venv/bin/activate  # On Windows use `venv\Scripts\activate`
-        ```
-    *   Install dependencies:
-        ```bash
-        pip install -r requirements.txt
-        ```
-    *   Apply database migrations:
-        ```bash
-        python manage.py migrate
-        ```
-    *   Create a superuser (for accessing Django admin):
-        ```bash
-        python manage.py createsuperuser
-        ```
+- [`YAML.parse(str, options): value`](https://eemeli.org/yaml/v1/#yaml-parse)
+- [`YAML.stringify(value, options): string`](https://eemeli.org/yaml/v1/#yaml-stringify)
 
-3.  **Frontend Setup:**
-    *   Navigate to the frontend directory:
-        ```bash
-        cd ../frontend
-        ```
-    *   Install dependencies:
-        ```bash
-        npm install
-        # or: yarn install
-        ```
+### YAML Documents
 
-### Running the Application
+- [`YAML.createNode(value, wrapScalars, tag): Node`](https://eemeli.org/yaml/v1/#creating-nodes)
+- [`YAML.defaultOptions`](https://eemeli.org/yaml/v1/#options)
+- [`YAML.Document`](https://eemeli.org/yaml/v1/#yaml-documents)
+  - [`constructor(options)`](https://eemeli.org/yaml/v1/#creating-documents)
+  - [`defaults`](https://eemeli.org/yaml/v1/#options)
+  - [`#anchors`](https://eemeli.org/yaml/v1/#working-with-anchors)
+  - [`#contents`](https://eemeli.org/yaml/v1/#content-nodes)
+  - [`#errors`](https://eemeli.org/yaml/v1/#errors)
+- [`YAML.parseAllDocuments(str, options): YAML.Document[]`](https://eemeli.org/yaml/v1/#parsing-documents)
+- [`YAML.parseDocument(str, options): YAML.Document`](https://eemeli.org/yaml/v1/#parsing-documents)
 
-1.  **Run the Backend Server:**
-    *   Make sure you are in the `backend` directory and your virtual environment is activated.
-    *   Start the Django development server (usually runs on `http://127.0.0.1:8000/`):
-        ```bash
-        python manage.py runserver
-        ```
+```js
+import { Pair, YAMLMap, YAMLSeq } from 'yaml/types'
+```
 
-2.  **Run the Frontend Server:**
-    *   Open a **new terminal**.
-    *   Navigate to the `frontend` directory.
-    *   Start the React development server (usually runs on `http://localhost:3000/`):
-        ```bash
-        npm start
-        # or: yarn start
-        ```
+- [`new Pair(key, value)`](https://eemeli.org/yaml/v1/#creating-nodes)
+- [`new YAMLMap()`](https://eemeli.org/yaml/v1/#creating-nodes)
+- [`new YAMLSeq()`](https://eemeli.org/yaml/v1/#creating-nodes)
 
-3.  **Access the Application:**
-    *   Open your web browser and navigate to `http://localhost:3000/`.
+### CST Parser
 
-## Next Steps
+```js
+import parseCST from 'yaml/parse-cst'
+```
 
-*   **Backend:**
-    *   Define database models in `backend/api/models.py`.
-    *   Create corresponding serializers in `backend/api/serializers.py`.
-    *   Implement API views and logic in `backend/api/views.py`.
-    *   Define API endpoints in `backend/api/urls.py`.
-    *   Integrate with the Gemini API for chatbot and other AI features.
-    *   Set up authentication (e.g., using Django REST Framework's token authentication or JWT).
-    *   Configure CORS if frontend and backend run on different origins (uncomment `corsheaders` in `settings.py` and add frontend origin).
-*   **Frontend:**
-    *   Replace placeholder components and data with actual implementations.
-    *   Implement API calls using `axios` to fetch data from the backend.
-    *   Build out the UI for each feature based on the designs.
-    *   Implement state management (e.g., React Context, Redux, Zustand) if needed.
-    *   Add animations and refine styling.
-    *   Implement authentication flow (login/signup forms, storing tokens).
-    *   Replace placeholder icons with a suitable icon library (e.g., `react-icons`).
-    *   Implement charting using `react-chartjs-2`.
-    *   Implement AR/3D model viewing (e.g., using libraries like `@google/model-viewer` or `three.js`).
-    *   Implement voice input/output using the Web Speech API. 
+- [`parseCST(str): CSTDocument[]`](https://eemeli.org/yaml/v1/#parsecst)
+- [`YAML.parseCST(str): CSTDocument[]`](https://eemeli.org/yaml/v1/#parsecst)
+
+## YAML.parse
+
+```yaml
+# file.yml
+YAML:
+  - A human-readable data serialization language
+  - https://en.wikipedia.org/wiki/YAML
+yaml:
+  - A complete JavaScript implementation
+  - https://www.npmjs.com/package/yaml
+```
+
+```js
+import fs from 'fs'
+import YAML from 'yaml'
+
+YAML.parse('3.14159')
+// 3.14159
+
+YAML.parse('[ true, false, maybe, null ]\n')
+// [ true, false, 'maybe', null ]
+
+const file = fs.readFileSync('./file.yml', 'utf8')
+YAML.parse(file)
+// { YAML:
+//   [ 'A human-readable data serialization language',
+//     'https://en.wikipedia.org/wiki/YAML' ],
+//   yaml:
+//   [ 'A complete JavaScript implementation',
+//     'https://www.npmjs.com/package/yaml' ] }
+```
+
+## YAML.stringify
+
+```js
+import YAML from 'yaml'
+
+YAML.stringify(3.14159)
+// '3.14159\n'
+
+YAML.stringify([true, false, 'maybe', null])
+// `- true
+// - false
+// - maybe
+// - null
+// `
+
+YAML.stringify({ number: 3, plain: 'string', block: 'two\nlines\n' })
+// `number: 3
+// plain: string
+// block: >
+//   two
+//
+//   lines
+// `
+```
+
+---
+
+Browser testing provided by:
+
+<a href="https://www.browserstack.com/open-source">
+<img width=200 src="https://eemeli.org/yaml/images/browserstack.svg" />
+</a>
